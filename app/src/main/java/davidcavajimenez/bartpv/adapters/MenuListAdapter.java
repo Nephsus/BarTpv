@@ -7,26 +7,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import davidcavajimenez.bartpv.R;
 import davidcavajimenez.bartpv.models.Dinings;
+import davidcavajimenez.bartpv.models.Dish;
 
 
+public class MenuListAdapter  extends BaseAdapter {
 
-public class DiningAdapter extends BaseAdapter {
-
-    private ArrayList<Dinings> mDinigs;
+    private ArrayList<Dish> mDishes;
 
     private View.OnClickListener mOnClickListener;
 
     private Context mContext;
 
-    public DiningAdapter(Context context, ArrayList<Dinings> dinings, View.OnClickListener onClickListener){
+    public MenuListAdapter(Context context, ArrayList<Dish> dishes, View.OnClickListener onClickListener){
         super();
-        this.mDinigs = dinings;
+        this.mDishes = dishes;
         mContext = context;
         this.mOnClickListener = onClickListener;
     }
@@ -35,36 +35,35 @@ public class DiningAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return  this.mDinigs.size();
+        return  this.mDishes.size();
     }
 
     @Override
-    public Dinings getItem(int i) {
-        return  this.mDinigs.get( i );
+    public Dish getItem(int i) {
+        return  this.mDishes.get( i );
     }
 
     @Override
     public long getItemId(int i) {
-        return  this.mDinigs.get( i ).getId();
+        return  i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         if (view == null) {
-            view =  LayoutInflater.from(mContext).inflate(R.layout.dining_row, viewGroup, false);
+            view =  LayoutInflater.from(mContext).inflate(R.layout.dish_row, viewGroup, false);
         }
 
-        TextView itemAlias = (TextView) view.findViewById(R.id.txtViewAlias);
-        TextView itemDescription = (TextView)view.findViewById(R.id.txtViewDescription);
+        TextView dish = (TextView) view.findViewById(R.id.dish_name);
 
 
-        itemAlias.setText( getItem( i ).getAlias() );
-        itemDescription.setText( getItem( i ).getDescription() );
+
+        dish.setText( getItem( i ).getTitle() );
 
 
-        itemAlias.setTag( getItem( i ) );
 
         return view;
     }
+
 }

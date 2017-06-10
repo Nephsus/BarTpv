@@ -1,18 +1,19 @@
 
 package davidcavajimenez.bartpv.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
 
 
-    private List<Dish> dishes = null;
+    private ArrayList<Dish> dishes = null;
 
-    public List<Dish> getDishes() {
+    public ArrayList<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(List<Dish> dishes) {
+    public void setDishes(ArrayList<Dish> dishes) {
         this.dishes = dishes;
     }
 

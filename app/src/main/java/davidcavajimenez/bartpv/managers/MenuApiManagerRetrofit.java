@@ -26,27 +26,58 @@ public class MenuApiManagerRetrofit implements MenuApiManager {
 
         MenuService service = retrofit.create(MenuService.class);
 
-        Call<MenuResponse> response = service.menuList();
+        Call<MenuResponse> response = service.menuListFirst();
+       final Call<MenuResponse> responseSecond = service.menuListSeconds();
 
         response.enqueue(new Callback<MenuResponse>() {
 
 
             @Override
-            public void onResponse(Call<MenuResponse> call, Response<MenuResponse> response) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                task.onTaskCompleted( response.body() );
+            public void onResponse(Call<MenuResponse> call, final Response<MenuResponse> response) {
+                Log.v("ee","ff");
+
+                responseSecond.enqueue(new Callback<MenuResponse>() {
+
+
+                    @Override
+                    public void onResponse(Call<MenuResponse> call, final Response<MenuResponse> responseSecond) {
+                        Log.v("ee","ff");
+
+                        task.onTaskCompleted( merge(response.body(), responseSecond.body()) );
+                    }
+
+                    @Override
+                    public void onFailure(Call<MenuResponse> call, Throwable t) {
+                        Log.v("MIERDA", "Error");
+                        // task.onTaskCompleted( null );
+                    }
+                });
+
+
+
+
+                //task.onTaskCompleted( response.body() );
             }
 
             @Override
             public void onFailure(Call<MenuResponse> call, Throwable t) {
                 Log.v("MIERDA", "Error");
-                task.onTaskCompleted( null );
+               // task.onTaskCompleted( null );
             }
         });
+
+
+
+
+
+
+    }
+
+    private MenuResponse merge(MenuResponse first, MenuResponse second){
+
+        first.getMenu().getDishes().addAll(second.getMenu().getDishes());
+
+        return first;
 
     }
 }

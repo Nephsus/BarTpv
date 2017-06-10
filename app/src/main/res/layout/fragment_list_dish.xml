@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
-   <android.support.v7.widget.CardView
-       android:id="@+id/dish"
+   <TextView
+       android:id="@+id/title_table"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       tools:text="prueba"
+       android:layout_margin="@dimen/general_margins">
+
+   </TextView>
+
+
+
+
+
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/recyclerdish"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"></android.support.v7.widget.CardView>
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/title_table">
 
 
 
+
+
+   </android.support.v7.widget.RecyclerView>
+
+   <android.support.design.widget.FloatingActionButton
+       android:id="@+id/add_dish"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       android:src="@drawable/ic_plus"
+       android:layout_margin="@dimen/general_margins"/>
+
+   <android.support.design.widget.FloatingActionButton
+       android:id="@+id/bill"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+       android:src="@drawable/bill"
+       android:layout_margin="@dimen/general_margins"/>
 
 </RelativeLayout>

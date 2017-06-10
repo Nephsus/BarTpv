@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+android:orientation="horizontal"
+android:layout_below="@+id/txtAlergenos">
+
+<ImageView
+    android:id="@+id/imagegluten"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scaleType="fitStart"
+    android:adjustViewBounds="true"
+    android:visibility="gone"
+    app:srcCompat="@drawable/icono_gluten"/>
+
+<ImageView
+    android:id="@+id/imagecrustaceos"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtAlergenos"
+    android:scaleType="fitStart"
+    android:adjustViewBounds="true"
+    android:visibility="gone"
+    app:srcCompat="@drawable/icono_crustaceos"/>
+
+<ImageView
+    android:id="@+id/imagehuevos"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtAlergenos"
+    android:scaleType="fitStart"
+    android:visibility="gone"
+    android:adjustViewBounds="true"
+    app:srcCompat="@drawable/icono_huevos"/>
+
+<ImageView
+    android:id="@+id/imagelacteos"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtAlergenos"
+    android:scaleType="fitStart"
+    android:visibility="gone"
+    android:adjustViewBounds="true"
+    app:srcCompat="@drawable/icono_lacteos"/>
+
+<ImageView
+    android:id="@+id/imagepescado"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtAlergenos"
+    android:scaleType="fitStart"
+    android:visibility="gone"
+    android:adjustViewBounds="true"
+    app:srcCompat="@drawable/icono_pescado"/>
+
+</LinearLayout>

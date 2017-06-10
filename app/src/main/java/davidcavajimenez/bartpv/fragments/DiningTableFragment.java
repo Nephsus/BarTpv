@@ -1,6 +1,7 @@
 package davidcavajimenez.bartpv.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import davidcavajimenez.bartpv.R;
 import davidcavajimenez.bartpv.activities.MainActivity;
 import davidcavajimenez.bartpv.adapters.DiningAdapter;
+import davidcavajimenez.bartpv.data.MenuData;
 import davidcavajimenez.bartpv.models.Dinings;
 
 
@@ -47,38 +49,25 @@ public class DiningTableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         View root = inflater.inflate(R.layout.fragment_dining_table, container, false);
 
         ListView listView = (ListView) root.findViewById(R.id.dining_tables);
 
-        View.OnClickListener prueba = new View.OnClickListener() {
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).detailDishTable();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ((MainActivity)getActivity()).detailDishTable( ListDishTableFragment.newInstance( i ) );
 
             }
-        };
+        });
 
-
-        listView.setAdapter( new DiningAdapter( getActivity(), getDiningsTables(), prueba));
+        listView.setAdapter( new DiningAdapter( getActivity(), MenuData.getInstance(getActivity()).getTables(), null));
 
         return root;
     }
 
-    private ArrayList<Dinings> getDiningsTables() {
 
-         ArrayList<Dinings> tables = new ArrayList<>();
-
-        tables.add( new Dinings(1,"Mesa 1", "Mesa de Comedor") );
-        tables.add( new Dinings(2,"Mesa 2", "Mesa de Fumador") );
-        tables.add( new Dinings(3,"Mesa 2", "Mesa de Comedor") );
-        tables.add( new Dinings(4,"Mesa 2", "Mesa de Terraza") );
-        tables.add( new Dinings(5,"Mesa 2", "Mesa de Terraza") );
-
-        return  tables;
-    }
 
 
     @Override
@@ -98,18 +87,6 @@ public class DiningTableFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
+
 }

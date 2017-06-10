@@ -1,8 +1,9 @@
 package davidcavajimenez.bartpv.models;
 
 
+import java.io.Serializable;
 
-public class Dinings {
+public class Dinings implements Serializable {
 
     private Integer mId;
     private String alias;
