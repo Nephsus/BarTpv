@@ -13,7 +13,7 @@ public interface MenuService {
 
     //http://www.mocky.io/v2/5931b4550f000094055bfb81
 
-    @GET("59398a3a1200003b12a67685")
+    @GET("593d3e831100007b12722a9d`")
     Call<MenuResponse> menuListFirst();
 
 

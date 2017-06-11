@@ -39,6 +39,8 @@ public class DetailDishFragment  extends Fragment {
     private  ImageView mImageView;
     private  TextView mTitle;
     private  TextView mDescription;
+    private  TextView mTxtPrice;
+
 
     private  ImageView mGluten;
     private  ImageView mCrustaceos;
@@ -83,6 +85,7 @@ public class DetailDishFragment  extends Fragment {
         mImageView = (ImageView) root.findViewById(R.id.imagedish);
         mTitle = (TextView) root.findViewById(R.id.txtTitle);
         mDescription = (TextView) root.findViewById(R.id.txtDescription);
+        mTxtPrice =(TextView) root.findViewById(R.id.txtPrice);
 
         mGluten  = (ImageView) root.findViewById(R.id.imagegluten);
         mCrustaceos = (ImageView) root.findViewById(R.id.imagecrustaceos);
@@ -133,6 +136,9 @@ public class DetailDishFragment  extends Fragment {
 
         mTitle.setText( mDish.getTitle() );
         mDescription.setText( mDish.getDescription() );
+
+        mDescription.setText( mDish.getDescription() );
+        mTxtPrice.setText(MenuData.doubleToPrice( mDish.getPrice() ));
 
 
         if(mDish.getAllergens()!= null && mDish.getAllergens().length > 0){
